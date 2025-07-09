@@ -3,7 +3,7 @@ import type { InternalAxiosRequestConfig } from 'axios';
 
 // Use the temporary backend URL provided earlier
 // TODO: Make this configurable via environment variables for production
-const API_BASE_URL = 'https://8000-igrfjqcsguksnbqmduoge-98bd9c5f.manusvm.computer';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
 
 // --- Interface Definitions (align with backend schemas.py) ---
 interface TokenResponse {
