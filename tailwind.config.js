@@ -4,6 +4,18 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'auth-container',
+    'auth-form-container',
+    'auth-logo',
+    'auth-title',
+    'auth-subtitle',
+    'auth-link',
+    'auth-input-group',
+    'auth-button',
+    'auth-error',
+    // Add any other custom classes you use
+  ],
   theme: {
     extend: {
       colors: {
