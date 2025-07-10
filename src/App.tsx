@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import './App.css';
 
@@ -46,34 +46,32 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public routes (redirect if logged in) */}
-        <Route element={<PublicRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Route>
+    <Routes>
+      {/* Public routes (redirect if logged in) */}
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Route>
 
-        {/* Protected routes (require authentication) */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/documents" element={<DocumentsPage />} />
-          <Route path="/emails" element={<EmailPage />} /> {/* Add route for EmailPage */}
-          {/* Add other protected routes here */}
-        </Route>
+      {/* Protected routes (require authentication) */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/documents" element={<DocumentsPage />} />
+        <Route path="/emails" element={<EmailPage />} /> {/* Add route for EmailPage */}
+        {/* Add other protected routes here */}
+      </Route>
 
-        {/* Redirect root path - check auth status before redirecting */}
-        <Route
-          path="/"
-          element={
-            <NavigateToDashboardOrLogin />
-          }
-        />
+      {/* Redirect root path - check auth status before redirecting */}
+      <Route
+        path="/"
+        element={
+          <NavigateToDashboardOrLogin />
+        }
+      />
 
-        {/* Catch-all 404 */}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+      {/* Catch-all 404 */}
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
